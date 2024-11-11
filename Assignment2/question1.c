@@ -3,40 +3,39 @@ kabir
 24k-0927
 question1
 */
-#include <stdio.h>
-main() 
-{
-    int arr[5], smallest, smallest2, i;
+#include<stdio.h>
 
-    printf("Enter 5 elements:\n");
-    for(i=0; i<5; i++) 
-	{
-        scanf("%d", &arr[i]);
-        while(arr[i]>=9999) 
-		{
-            printf("(Value out of range!). Enter a number less than 9999: ");
-            scanf("%d", &arr[i]);
+int main(){
+    int n,smallest;
+    printf("enter the size of array");
+    scanf("%d",&n);
+    int array[n];
+    for(int i=0;i<n;i++){
+        printf("enter the %d element of array",i+1);
+        scanf("%d",&array[i]);
+        while(array[i]>9999){
+            printf("the number should be less than 9999");
+            scanf("%d",&array[i]);
         }
     }
-    smallest=smallest2=9999;
-    for(i=0; i<5; i++) 
-	{
-        if(arr[i]<smallest) 
-		{
-            smallest2=smallest;
-            smallest = arr[i];
-        } 
-		else if(arr[i]<smallest2 && arr[i]!=smallest) 
-		{
-            smallest2 = arr[i];
+    smallest=array[0];
+    for(int i=0;i<n;i++){
+        if(array[i]<smallest){
+            smallest=array[i];
         }
     }
-    if(smallest2==9999) 
-	{
-        printf("\nThere is no second smallest element (all elements are equal).\n");
-    } 
-	else 
-	{
-        printf("\nThe Second smallest element in the array is: %d\n", smallest2);
+    for(int i=0;i<n;i++){
+        if(array[i]==smallest){
+            array[i]=9999;
+        }
     }
+    smallest=array[0];
+    for(int i=0;i<n;i++){
+        if(array[i]<smallest){
+            smallest=array[i];
+        }
+    }
+    printf("2nd smallest:%d",smallest);
+
+    return 0;
 }
